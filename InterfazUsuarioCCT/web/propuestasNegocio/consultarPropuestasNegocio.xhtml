@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="X-UA-Conpatible" content="IE=edge" />
+        <title>Consulta de Propuestas de Negocio</title>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+        <script type="text/javascript" language="javascript" src="../resources/js/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" language="javascript" src="../resources/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" language="javascript">
+            $(document).ready(function () {
+                $('#example').dataTable({
+                    "bPaginate": true,
+                    "bFilter": false,
+                    "bInfo": true,
+                    "bProcessing": false,
+                    "bJQueryUI": true,
+                    "sEmptyTable": "No se encontraron propuestas de negocio",
+                });
+            });
+        </script>
+
+    </h:head> 
+
+    <h:body>
+
+        <div class="container">
+            <div class="navbar navbar-inverse">
+                <div class="navbar-brand">
+                    CONSULTAR PROPUESTAS DE NEGOCIO
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h:form styleClass="form-horizontal">
+                        <div class="form-group">
+                            <h:outputLabel value="Nombre Requerimiento" styleClass="control-label col-sm-2"/>
+                            <div class="col-sm-10">
+                                <h:inputText value="#{consultarPropuestas.nombreRequerimiento}" styleClass="form-control"/>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <h:outputLabel value="Razón Social Socio de Negocio" styleClass="control-label col-sm-2"/>
+                            <div class="col-sm-10">
+                                <h:inputText value="#{consultarPropuestas.razonSocialSocio}" styleClass="form-control"/>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <h:outputLabel value="Nombre Vendedor" styleClass="control-label col-sm-2"/>
+                            <div class="col-sm-10">
+                                <h:inputText value="#{consultarPropuestas.nombreVendedor}" styleClass="form-control"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <h:commandButton action="#{consultarPropuestas.consultar()}" value="Consultar" styleClass="btn btn-default"/>
+                            </div>
+                        </div>
+                    </h:form>
+
+                    <table id="example" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Requerimiento</th>
+                                <th>Socio de Negocio</th>
+                                <th>Vendedor</th>
+                                <th>Resumen</th>
+                                <th>Costo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ui:repeat var="prop" value="#{consultarPropuestas.propuestas}">
+                                <tr>
+                                    <td>#{prop.id}</td>
+                                    <td>#{prop.requerimiento.nombre}</td>
+                                    <td>#{prop.socioNegocio.razonSocial}</td>
+                                    <td>#{prop.requerimiento.vendedor.nombre}</td>
+                                    <td>#{prop.resumen}</td>
+                                    <td>#{prop.costo}</td>                                    
+                                </tr>
+                            </ui:repeat>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>        
+    </h:body>
+</html>
+
