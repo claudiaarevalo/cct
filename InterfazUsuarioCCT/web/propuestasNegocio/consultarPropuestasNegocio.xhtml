@@ -41,27 +41,27 @@
                         <div class="form-group">
                             <h:outputLabel value="Nombre Requerimiento" styleClass="control-label col-sm-2"/>
                             <div class="col-sm-10">
-                                <h:inputText value="#{consultarPropuestas.nombreRequerimiento}" styleClass="form-control"/>
+                                <h:inputText id="nombreRequerimientoITX" value="#{consultarPropuestas.nombreRequerimiento}" styleClass="form-control"/>
                             </div>
                         </div>
                         
                         <div class="form-group">
                             <h:outputLabel value="Razón Social Socio de Negocio" styleClass="control-label col-sm-2"/>
                             <div class="col-sm-10">
-                                <h:inputText value="#{consultarPropuestas.razonSocialSocio}" styleClass="form-control"/>
+                                <h:inputText id="razonSocialITX" value="#{consultarPropuestas.razonSocialSocio}" styleClass="form-control"/>
                             </div>
                         </div>
                         
                         <div class="form-group">
                             <h:outputLabel value="Nombre Vendedor" styleClass="control-label col-sm-2"/>
                             <div class="col-sm-10">
-                                <h:inputText value="#{consultarPropuestas.nombreVendedor}" styleClass="form-control"/>
+                                <h:inputText id="nombreVendedorITX" value="#{consultarPropuestas.nombreVendedor}" styleClass="form-control"/>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <h:commandButton action="#{consultarPropuestas.consultar()}" value="Consultar" styleClass="btn btn-default"/>
+                                <h:commandButton id="consultarCBT" action="#{consultarPropuestas.consultar()}" value="Consultar" styleClass="btn btn-default"/>
                             </div>
                         </div>
                     </h:form>
